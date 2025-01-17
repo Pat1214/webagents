@@ -96,3 +96,148 @@ footer {
   padding: 2px 6px;
   border-radius: 4px;
 }
+
+/* Add/Update responsive styles */
+@media (max-width: 768px) {
+  /* Navigation */
+  nav {
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-left {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    gap: 1rem;
+  }
+
+  .nav-left::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-right {
+    width: 100%;
+    justify-content: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Categories Section */
+  .categories {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .category-card {
+    padding: 1.5rem;
+  }
+
+  /* Stats Section */
+  .stats-container {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  /* Features Section */
+  .features {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  /* Showcase Section */
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  /* Shapes Animation */
+  .shape {
+    opacity: 0.3;
+  }
+
+  /* Footer */
+  footer {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+}
+
+/* Add styles for medium-sized devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Add smooth scrolling for iOS devices */
+@supports (-webkit-overflow-scrolling: touch) {
+  .nav-left {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Improve tap targets for mobile */
+@media (hover: none) {
+  .nav-left a,
+  .cta-button,
+  .connect-wallet,
+  button {
+    min-height: 44px;
+    padding: 12px 20px;
+  }
+}
