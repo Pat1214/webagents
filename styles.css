@@ -97,73 +97,60 @@ footer {
   border-radius: 4px;
 }
 
-/* Hamburger menu styles */
-.hamburger {
+/* Mobile Warning Overlay */
+.mobile-warning-overlay {
   display: none;
-  flex-direction: column;
-  cursor: pointer;
-  padding: 4px;
-  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  z-index: 9999;
+  padding: 2rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: var(--text);
-  margin: 3px 0;
-  transition: all 0.3s ease;
+.mobile-warning-content {
+  background: rgba(26, 26, 46, 0.95);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  max-width: 90%;
 }
 
-/* Mobile styles */
+.warning-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.mobile-warning-content h2 {
+  color: var(--text);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.mobile-warning-content p {
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.warning-subtitle {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* Show warning on mobile devices */
 @media (max-width: 768px) {
-  .hamburger {
+  .mobile-warning-overlay {
     display: flex;
   }
 
-  .nav-left {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 70%;
-    height: 100vh;
-    background: rgba(26, 26, 46, 0.98);
-    backdrop-filter: blur(10px);
-    flex-direction: column;
-    padding: 80px 20px;
-    transition: 0.3s ease;
-    z-index: 99;
-  }
-
-  .nav-left.active {
-    left: 0;
-  }
-
-  .nav-left a {
-    padding: 15px 0;
-    font-size: 1.1rem;
-  }
-
-  /* Animate hamburger to X when menu is open */
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-  }
-
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-
-  /* Adjust other nav elements for mobile */
-  nav {
-    padding: 1rem;
-  }
-
-  .connect-wallet {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
+  body {
+    overflow: hidden; /* Prevent scrolling behind overlay */
   }
 }
