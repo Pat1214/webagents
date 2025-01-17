@@ -10,13 +10,20 @@
   <body data-requires-wallet="true">
     <nav>
       <div class="nav-left">
-        <a href="/">Home</a>
-        <a href="/pages/marketplace.html">Marketplace</a>
-        <a href="/pages/create-agent.html">Create Agent</a>
-        <a href="/pages/escrow.html">Trade</a>
-        <a href="/pages/leaderboard.html">Leaderboard</a>
+        <a href="../index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="create-agent.html">Create Agent</a>
+        <a href="escrow.html">Trade</a>
+        <a href="leaderboard.html">Leaderboard</a>
+      </div>
+      <div class="nav-center">
+        <div class="token-limit">
+          <span id="current-tokens">0</span> /
+          <span id="max-tokens">2048</span> Token Limit
+        </div>
       </div>
       <div class="nav-right">
+        <button class="save-btn" disabled>SAVE</button>
         <button class="connect-wallet" onclick="connectWallet()">
           Connect Wallet
         </button>
