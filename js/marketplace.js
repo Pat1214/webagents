@@ -23,7 +23,7 @@ class AIMarketplace {
         name: "SportsSage AI",
         description:
           "Advanced sports prediction agent using historical data and real-time analytics",
-        price: 0.8,
+        price: 16,
         rating: 4.8,
         category: "prediction",
         image:
@@ -40,8 +40,8 @@ class AIMarketplace {
         name: "TradeWizard Pro",
         description:
           "AI-powered trading assistant with market analysis and portfolio management",
-        price: 1.2,
-        rating: 4.7,
+        price: 24,
+        rating: 4.6,
         category: "trading",
         image:
           "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=300",
@@ -57,7 +57,7 @@ class AIMarketplace {
         name: "ContentForge AI",
         description:
           "Creative content generation agent for marketing and social media",
-        price: 0.5,
+        price: 10,
         rating: 3.9,
         category: "creative",
         image:
@@ -74,7 +74,7 @@ class AIMarketplace {
         name: "ResearchMind",
         description:
           "Academic research assistant with advanced data analysis capabilities",
-        price: 0.9,
+        price: 18,
         rating: 4.5,
         category: "research",
         image:
@@ -254,7 +254,7 @@ class AIMarketplace {
         id: 15,
         name: "StudyBrain",
         description: "Educational assistant for students and lifelong learners",
-        price: 0.5,
+        price: 10,
         rating: 4.2,
         category: "education",
         image:
@@ -270,7 +270,7 @@ class AIMarketplace {
         id: 16,
         name: "EventPro AI",
         description: "Event planning and management assistant",
-        price: 0.9,
+        price: 18,
         rating: 3.9,
         category: "lifestyle",
         image:
@@ -286,7 +286,7 @@ class AIMarketplace {
         id: 17,
         name: "PetPal",
         description: "Pet care and training assistance system",
-        price: 0.3,
+        price: 6,
         rating: 4.1,
         category: "lifestyle",
         image:
@@ -302,7 +302,7 @@ class AIMarketplace {
         id: 18,
         name: "LanguageMaster",
         description: "Advanced language learning and translation assistant",
-        price: 0.7,
+        price: 14,
         rating: 4.3,
         category: "education",
         image:
@@ -489,7 +489,7 @@ class AIMarketplace {
       card.querySelector(".agent-preview").src = agent.image;
       card.querySelector(".agent-name").textContent = agent.name;
       card.querySelector(".agent-description").textContent = agent.description;
-      card.querySelector(".agent-price").textContent = `${agent.price} ETH`;
+      card.querySelector(".agent-price").textContent = `${agent.price} SOL`;
       card.querySelector(".agent-rating").textContent = `★ ${agent.rating}`;
 
       // Add features
@@ -557,8 +557,8 @@ class AIMarketplace {
   }
 
   async purchaseAgent(agent) {
-    if (!window.ethereum) {
-      alert("Please install MetaMask to purchase agents!");
+    if (!window.solana) {
+      alert("Please install Phantom Wallet to purchase agents!");
       return;
     }
 
@@ -566,24 +566,23 @@ class AIMarketplace {
     this.showInvitationModal(async (inviteCode) => {
       if (inviteCode) {
         try {
-          const accounts = await window.ethereum.request({
-            method: "eth_requestAccounts",
-          });
+          const response = await window.solana.connect();
+          const publicKey = response.publicKey;
 
-          if (!accounts || accounts.length === 0) {
-            throw new Error("No accounts found");
+          if (!publicKey) {
+            throw new Error("No wallet connected");
           }
 
           // Here you would normally:
           // 1. Verify invitation code with backend
-          // 2. Process the purchase transaction
+          // 2. Process the Solana transaction
           // 3. Transfer ownership of the agent
 
           alert("Purchase system coming soon. This is currently a simulation.");
         } catch (error) {
           console.error("Purchase failed:", error);
-          if (error.message.includes("accounts found")) {
-            alert("Please connect your wallet first.");
+          if (error.message.includes("wallet")) {
+            alert("Please connect your Phantom wallet first.");
           } else {
             alert("Purchase failed. Please try again.");
           }
