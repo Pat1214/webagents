@@ -91,7 +91,7 @@ class AIMarketplace {
         name: "CodeBuddy AI",
         description:
           "Intelligent coding assistant for developers and programmers",
-        price: 0.7,
+        price: 15,
         rating: 4.2,
         category: "development",
         image:
@@ -108,7 +108,7 @@ class AIMarketplace {
         name: "HealthGuard",
         description:
           "Personal health monitoring and wellness recommendation system",
-        price: 0.6,
+        price: 16,
         rating: 3.7,
         category: "health",
         image:
@@ -124,7 +124,7 @@ class AIMarketplace {
         id: 7,
         name: "FinanceGuru",
         description: "Personal finance advisor and budget optimization agent",
-        price: 0.4,
+        price: 40,
         rating: 4.1,
         category: "finance",
         image:
@@ -140,7 +140,7 @@ class AIMarketplace {
         id: 8,
         name: "GameMaster AI",
         description: "Advanced gaming companion and strategy advisor",
-        price: 0.3,
+        price: 19,
         rating: 3.5,
         category: "gaming",
         image:
@@ -156,7 +156,7 @@ class AIMarketplace {
         id: 9,
         name: "EcoSmart",
         description: "Environmental impact analysis and sustainability advisor",
-        price: 0.5,
+        price: 14,
         rating: 4.3,
         category: "environment",
         image:
@@ -173,7 +173,7 @@ class AIMarketplace {
         id: 10,
         name: "MusicMuse",
         description: "AI music composition and production assistant",
-        price: 0.8,
+        price: 16,
         rating: 4.0,
         category: "creative",
         image:
@@ -189,7 +189,7 @@ class AIMarketplace {
         id: 11,
         name: "CyberSentry",
         description: "Cybersecurity monitoring and threat detection agent",
-        price: 1.5,
+        price: 20,
         rating: 4.9,
         category: "security",
         image:
@@ -206,7 +206,7 @@ class AIMarketplace {
         name: "ChefBot",
         description:
           "Culinary assistant with recipe generation and meal planning",
-        price: 0.4,
+        price: 10,
         rating: 3.8,
         category: "lifestyle",
         image:
@@ -222,7 +222,7 @@ class AIMarketplace {
         id: 13,
         name: "TravelBuddy",
         description: "Travel planning and itinerary optimization assistant",
-        price: 0.6,
+        price: 12,
         rating: 4.4,
         category: "travel",
         image:
@@ -238,7 +238,7 @@ class AIMarketplace {
         id: 14,
         name: "FitnessCoach",
         description: "Personal training and workout optimization agent",
-        price: 0.7,
+        price: 17,
         rating: 3.6,
         category: "health",
         image:
@@ -286,7 +286,7 @@ class AIMarketplace {
         id: 17,
         name: "PetPal",
         description: "Pet care and training assistance system",
-        price: 6,
+        price: 16,
         rating: 4.1,
         category: "lifestyle",
         image:
