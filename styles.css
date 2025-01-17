@@ -248,27 +248,28 @@ footer {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 1rem;
   z-index: 1000;
-}
-
-.hamburger {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text);
   position: relative;
-  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
 }
 
+.hamburger,
 .hamburger::before,
 .hamburger::after {
   content: "";
+  display: block;
   position: absolute;
-  width: 24px;
-  height: 2px;
+  width: 30px;
+  height: 3px;
   background: var(--text);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.hamburger {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .hamburger::before {
@@ -279,18 +280,17 @@ footer {
   bottom: -8px;
 }
 
+/* Active state for hamburger animation */
 .mobile-menu-btn.active .hamburger {
   background: transparent;
 }
 
 .mobile-menu-btn.active .hamburger::before {
-  transform: rotate(45deg);
-  top: 0;
+  transform: translateY(8px) rotate(45deg);
 }
 
 .mobile-menu-btn.active .hamburger::after {
-  transform: rotate(-45deg);
-  bottom: 0;
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
