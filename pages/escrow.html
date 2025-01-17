@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Agent Trading</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/escrow.css" />
+  </head>
+  <body data-requires-wallet="true">
+    <nav>
+      <div class="nav-left">
+        <a href="/">Home</a>
+        <a href="/pages/marketplace.html">Marketplace</a>
+        <a href="/pages/create-agent.html">Create Agent</a>
+        <a href="/pages/escrow.html">Trade</a>
+      </div>
+      <div class="nav-right">
+        <button class="connect-wallet" onclick="connectWallet()">
+          Connect Wallet
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <div class="trading-container">
+        <h1>AI Agent Trading</h1>
+        <div class="trade-section">
+          <div class="trade-column">
+            <h2>Your AI Agents</h2>
+            <div class="agent-list" id="your-agents">
+              <!-- Agent cards will be loaded here -->
+            </div>
+          </div>
+
+          <div class="trade-actions">
+            <div class="escrow-details">
+              <h3>Escrow Details</h3>
+              <div class="escrow-form">
+                <div class="form-group">
+                  <label>Recipient Address</label>
+                  <input type="text" id="agent-recipient" placeholder="0x..." />
+                </div>
+                <div class="form-group">
+                  <label>Price (ETH)</label>
+                  <input type="number" id="agent-price" min="0" step="0.01" />
+                </div>
+                <div class="form-group">
+                  <label>Lock Period (days)</label>
+                  <input
+                    type="number"
+                    id="agent-lock-period"
+                    min="1"
+                    value="3"
+                  />
+                </div>
+              </div>
+              <button class="create-escrow-btn" id="create-agent-escrow">
+                Create Escrow
+              </button>
+            </div>
+          </div>
+
+          <div class="trade-column">
+            <h2>Active Escrows</h2>
+            <div class="escrow-list" id="agent-escrows">
+              <!-- Active escrows will be loaded here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <template id="agent-card-template">
+      <div class="agent-card">
+        <img src="" alt="Agent Preview" class="agent-preview" />
+        <div class="agent-info">
+          <h3 class="agent-name"></h3>
+          <p class="agent-description"></p>
+          <div class="agent-stats">
+            <span class="agent-rating"></span>
+          </div>
+          <button class="select-agent-btn">Select for Trade</button>
+        </div>
+      </div>
+    </template>
+
+    <template id="escrow-card-template">
+      <div class="escrow-card">
+        <div class="escrow-info">
+          <h4 class="escrow-title"></h4>
+          <p class="escrow-details"></p>
+          <div class="escrow-status"></div>
+          <div class="escrow-actions">
+            <button class="approve-btn">Approve</button>
+            <button class="cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <div id="invitation-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Invitation Required</h2>
+        </div>
+        <div class="modal-body">
+          <p>Please enter your invitation code to create an escrow.</p>
+          <div class="form-group">
+            <input
+              type="text"
+              id="invitation-code"
+              placeholder="Enter invitation code"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-btn cancel-btn" id="cancel-invitation">
+            Cancel
+          </button>
+          <button class="modal-btn confirm-btn" id="confirm-invitation">
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/wallet.js"></script>
+    <script src="../js/escrow.js"></script>
+  </body>
+</html>

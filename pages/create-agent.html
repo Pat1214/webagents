@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create AI Agent</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/create-agent.css" />
+  </head>
+  <body data-requires-wallet="true">
+    <nav>
+      <div class="nav-left">
+        <a href="/">Home</a>
+        <a href="/pages/marketplace.html">Marketplace</a>
+        <a href="/pages/create-agent.html">Create Agent</a>
+        <a href="/pages/escrow.html">Trade</a>
+        <a href="/pages/leaderboard.html">Leaderboard</a>
+      </div>
+      <div class="nav-right">
+        <button class="connect-wallet" onclick="connectWallet()">
+          Connect Wallet
+        </button>
+      </div>
+    </nav>
+
+    <main class="create-agent-container">
+      <div class="sidebar">
+        <div class="sidebar-section active" data-section="basic">
+          <span class="section-label">Basic</span>
+        </div>
+        <div class="sidebar-section" data-section="personality">
+          <span class="section-label">Personality</span>
+          <span class="new-badge">NEW</span>
+        </div>
+        <div class="sidebar-section" data-section="knowledge">
+          <span class="section-label">Knowledge</span>
+        </div>
+        <div class="sidebar-section" data-section="avatar">
+          <span class="section-label">Avatar</span>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="content-header">
+          <h2>BASIC</h2>
+          <div class="header-actions">
+            <button class="action-btn chat-preview">
+              <span class="icon">💭</span>
+              Chat
+            </button>
+            <button class="action-btn avatar-preview">
+              <span class="icon">🤖</span>
+              Avatar
+            </button>
+          </div>
+        </div>
+
+        <div class="form-container">
+          <div class="form-group">
+            <label>Name</label>
+            <div class="input-help">
+              The name displayed on the character card
+            </div>
+            <input
+              type="text"
+              id="agentName"
+              placeholder="Enter agent name"
+              maxlength="50"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Nickname</label>
+            <div class="input-help">
+              The name your friends refer to you by in conversation
+            </div>
+            <input
+              type="text"
+              id="agentNickname"
+              placeholder="Enter nickname"
+              maxlength="30"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+            <div class="input-help">
+              Useful for making your character discoverable by others
+            </div>
+            <div class="category-tags" id="categoryTags"></div>
+            <button class="add-category-btn">+ Add Category</button>
+          </div>
+
+          <div class="form-group">
+            <label>Short Bio</label>
+            <div class="input-help">
+              The description displayed on the Character Card
+            </div>
+            <textarea
+              id="agentBio"
+              placeholder="ex. A friendly wizard with round glasses"
+              maxlength="200"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Voice</label>
+            <div class="input-help">
+              How your character will sound when they speak
+            </div>
+            <select id="agentVoice">
+              <option value="en_US-hfc_female">Female (US)</option>
+              <option value="en_US-hfc_male">Male (US)</option>
+              <option value="en_UK-hfc_female">Female (UK)</option>
+              <option value="en_UK-hfc_male">Male (UK)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-panel">
+        <div class="preview-container">
+          <div class="preview-header">Preview</div>
+          <div class="chat-preview-container">
+            <div class="agent-message">
+              <div class="agent-avatar">
+                <div class="avatar-placeholder"></div>
+              </div>
+              <div class="message-content">
+                <div class="message-bubble">
+                  Hey there, I am <span id="previewName">Holo</span>! How are
+                  you?
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="../js/wallet.js"></script>
+    <script src="../js/create-agent.js"></script>
+  </body>
+</html>

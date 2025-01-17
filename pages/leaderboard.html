@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Agent Leaderboard</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/leaderboard.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <a href="/">Home</a>
+        <a href="/pages/marketplace.html">Marketplace</a>
+        <a href="/pages/create-agent.html">Create Agent</a>
+        <a href="/pages/escrow.html">Trade</a>
+        <a href="/pages/leaderboard.html">Leaderboard</a>
+      </div>
+      <div class="nav-right">
+        <button class="connect-wallet" onclick="connectWallet()">
+          Connect Wallet
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <div class="points-banner">
+        <p>
+          Earn points by entering pools
+          <a href="#" class="highlight">here</a> or by connecting your X/Twitter
+          account <a href="#" class="highlight">here</a>.
+        </p>
+      </div>
+
+      <div class="top-performers">
+        <div class="performer-card second-place">
+          <div class="performer-avatar">
+            <img
+              src="https://avatars.githubusercontent.com/u/1"
+              alt="Second Place"
+            />
+          </div>
+          <div class="performer-info">
+            <h3>rv9M...8ghXd</h3>
+            <div class="trophy-icon silver">🏆</div>
+            <p>Earn 343 points</p>
+          </div>
+        </div>
+
+        <div class="performer-card first-place">
+          <div class="performer-avatar">
+            <img
+              src="https://avatars.githubusercontent.com/u/2"
+              alt="First Place"
+            />
+          </div>
+          <div class="performer-info">
+            <h3>@GhostHash1</h3>
+            <div class="trophy-icon gold">🏆</div>
+            <p>Earn 830 points</p>
+          </div>
+        </div>
+
+        <div class="performer-card third-place">
+          <div class="performer-avatar">
+            <img
+              src="https://avatars.githubusercontent.com/u/3"
+              alt="Third Place"
+            />
+          </div>
+          <div class="performer-info">
+            <h3>@captainkong_eth</h3>
+            <div class="trophy-icon bronze">🏆</div>
+            <p>Earn 395 points</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="leaderboard-table">
+        <div class="table-header">
+          <div class="column place">Place</div>
+          <div class="column username">Username</div>
+          <div class="column points">Points</div>
+        </div>
+        <div class="table-body" id="leaderboardList">
+          <!-- Leaderboard entries will be dynamically added here -->
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/wallet.js"></script>
+    <script src="../js/leaderboard.js"></script>
+  </body>
+</html>

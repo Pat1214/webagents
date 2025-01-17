@@ -1,0 +1,168 @@
+:root {
+  --purple-primary: #9747ff;
+  --dark-bg: #14141f;
+  --card-bg: rgba(26, 26, 46, 0.95);
+  --gold: #ffd700;
+  --silver: #c0c0c0;
+  --bronze: #cd7f32;
+}
+
+body {
+  background-color: var(--dark-bg);
+  min-height: 100vh;
+}
+
+.points-banner {
+  background-color: var(--purple-primary);
+  padding: 1.5rem;
+  text-align: center;
+  margin: 2rem auto;
+  border-radius: 12px;
+  max-width: 800px;
+}
+
+.points-banner p {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.highlight {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.top-performers {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 2rem;
+  margin: 4rem 0;
+  padding: 0 2rem;
+}
+
+.performer-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.performer-card:hover {
+  transform: translateY(-10px);
+}
+
+.first-place {
+  padding-top: 4rem;
+  margin-bottom: -2rem;
+}
+
+.performer-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+}
+
+.performer-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.performer-info h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.trophy-icon {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.gold {
+  color: var(--gold);
+}
+.silver {
+  color: var(--silver);
+}
+.bronze {
+  color: var(--bronze);
+}
+
+.leaderboard-table {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 100px 1fr 150px;
+  padding: 1rem;
+  background: rgba(151, 71, 255, 0.1);
+  border-radius: 8px 8px 0 0;
+  font-weight: bold;
+  color: var(--purple-primary);
+}
+
+.table-body .row {
+  display: grid;
+  grid-template-columns: 100px 1fr 150px;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: center;
+}
+
+.table-body .row:hover {
+  background: rgba(151, 71, 255, 0.05);
+}
+
+.place {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.place-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.points {
+  text-align: right;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .top-performers {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .first-place {
+    margin-bottom: 0;
+  }
+
+  .performer-card {
+    width: 100%;
+    max-width: 300px;
+  }
+}

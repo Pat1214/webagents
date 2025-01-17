@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Agent Marketplace</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+      .hero {
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        background: radial-gradient(
+          circle at center,
+          var(--primary) 0%,
+          var(--background) 100%
+        );
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 2;
+        max-width: 800px;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(
+          45deg,
+          var(--text) 30%,
+          var(--secondary) 70%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientFlow 8s ease infinite;
+      }
+
+      .floating-shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+
+      .shape {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(150, 233, 198, 0.1);
+        animation: float 20s infinite;
+      }
+
+      .categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        padding: 4rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .category-card {
+        background: rgba(26, 26, 46, 0.95);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .category-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--primary), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .category-card:hover::before {
+        opacity: 0.1;
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+      }
+
+      .stats {
+        display: flex;
+        justify-content: space-around;
+        padding: 4rem 2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(108, 34, 166, 0.2),
+          transparent
+        );
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: bold;
+        background: linear-gradient(45deg, var(--text), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      @keyframes gradientFlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .animated-showcase {
+        padding: 4rem 2rem;
+        background: rgba(26, 26, 46, 0.5);
+      }
+
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .showcase-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .showcase-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+      }
+
+      .card-media {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .showcase-card:hover .card-media img {
+        transform: scale(1.05);
+      }
+
+      .card-content {
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .card-content h3 {
+        margin: 0 0 0.5rem;
+        color: var(--text);
+        font-size: 1.2rem;
+      }
+
+      .card-content p {
+        margin: 0;
+        color: rgba(228, 228, 228, 0.8);
+        font-size: 0.9rem;
+      }
+
+      /* Add a subtle glow effect to cards */
+      .showcase-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--primary), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .showcase-card:hover::after {
+        opacity: 0.1;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <a href="/">Home</a>
+        <a href="/pages/marketplace.html">Marketplace</a>
+        <a href="/pages/create-agent.html">Create Agent</a>
+        <a href="/pages/escrow.html">Trade</a>
+        <a href="/pages/leaderboard.html">Leaderboard</a>
+      </div>
+      <div class="nav-right">
+        <button class="connect-wallet" onclick="connectWallet()">
+          Connect Wallet
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="floating-shapes" id="shapes"></div>
+        <div class="hero-content" data-aos="fade-up">
+          <h1>AI Agent Marketplace</h1>
+          <p>Create, customize, and trade AI agents in a secure environment</p>
+          <div class="cta-buttons">
+            <a href="/pages/marketplace.html" class="cta-button primary-cta"
+              >Browse Agents</a
+            >
+            <a href="/pages/create-agent.html" class="cta-button secondary-cta"
+              >Build Your Agent</a
+            >
+            <a href="/pages/escrow.html" class="cta-button secondary-cta"
+              >Trade Agents</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="animated-showcase" data-aos="fade-up">
+        <div class="showcase-grid">
+          <div class="showcase-card">
+            <div class="card-media">
+              <img
+                src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjM5YzFiMzM3ZDM1NDFiMjFkNjYyZWM5ZWJjNzY4ZmM1ZjI5ZDU5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cuHjncTuHW40g/giphy.gif"
+                alt="AI Assistant"
+              />
+            </div>
+            <div class="card-content">
+              <h3>AI Companions</h3>
+              <p>Friendly and helpful digital assistants</p>
+            </div>
+          </div>
+          <div class="showcase-card">
+            <div class="card-media">
+              <img
+                src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmN4Z2k1Y2RpbTF1NXd0MWx5NHZ6ZWR0d2t2aWx0YmQyYnQxbG92eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/12BYUePgtn7sis/giphy.gif"
+                alt="Trading Bot"
+              />
+            </div>
+            <div class="card-content">
+              <h3>Trading Experts</h3>
+              <p>Smart market analysis and predictions</p>
+            </div>
+          </div>
+          <div class="showcase-card">
+            <div class="card-media">
+              <img
+                src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzB1ZWx0Y2RxZnR5ZWx6ZHJyY2pwYnB1aHR0cWx5ZWN0aWx5YjJ2eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LMcB8XospGZO8UQq87/giphy.gif"
+                alt="Creative AI"
+              />
+            </div>
+            <div class="card-content">
+              <h3>Creative Partners</h3>
+              <p>Unleash your creative potential</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats" data-aos="fade-up">
+        <div class="stat-item">
+          <div class="stat-number" data-count="1387">0</div>
+          <p>Active Agents</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="7742">0</div>
+          <p>Users</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="23651">0</div>
+          <p>Transactions</p>
+        </div>
+      </section>
+
+      <section class="categories">
+        <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+          <h3>Sports Prediction</h3>
+          <p>Advanced analytics and real-time predictions</p>
+        </div>
+        <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+          <h3>Trading Bots</h3>
+          <p>Automated market analysis and trading</p>
+        </div>
+        <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+          <h3>Creative AI</h3>
+          <p>Content generation and creative assistance</p>
+        </div>
+        <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+          <h3>Research Assistants</h3>
+          <p>Academic and data analysis tools</p>
+        </div>
+        <div class="category-card" data-aos="fade-up" data-aos-delay="500">
+          <h3>Agent Trading</h3>
+          <p>Buy, sell, and trade AI agents securely</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>©2025 AI Agent Marketplace, All rights reserved</p>
+      <div>
+        <a href="/terms">Terms of Service</a>
+        <a href="/privacy">Privacy Policy</a>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/wallet.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+
+      // Create floating shapes
+      function createShapes() {
+        const shapes = document.getElementById("shapes");
+        const numShapes = 15;
+
+        for (let i = 0; i < numShapes; i++) {
+          const shape = document.createElement("div");
+          shape.className = "shape";
+          shape.style.width = Math.random() * 100 + 50 + "px";
+          shape.style.height = shape.style.width;
+          shape.style.left = Math.random() * 100 + "%";
+          shape.style.top = Math.random() * 100 + "%";
+          shape.style.animationDelay = Math.random() * 5 + "s";
+          shapes.appendChild(shape);
+        }
+      }
+
+      // Animate statistics
+      function animateStats() {
+        const stats = document.querySelectorAll(".stat-number");
+        stats.forEach((stat) => {
+          const target = parseInt(stat.getAttribute("data-count"));
+          let current = 0;
+          const increment = target / 100;
+          const timer = setInterval(() => {
+            current += increment;
+            stat.textContent = Math.floor(current);
+            if (current >= target) {
+              stat.textContent = target;
+              clearInterval(timer);
+            }
+          }, 20);
+        });
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", () => {
+        createShapes();
+        animateStats();
+      });
+    </script>
+  </body>
+</html>
