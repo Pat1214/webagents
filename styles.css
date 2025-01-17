@@ -96,3 +96,74 @@ footer {
   padding: 2px 6px;
   border-radius: 4px;
 }
+
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 100;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text);
+  margin: 3px 0;
+  transition: all 0.3s ease;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-left {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(26, 26, 46, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding: 80px 20px;
+    transition: 0.3s ease;
+    z-index: 99;
+  }
+
+  .nav-left.active {
+    left: 0;
+  }
+
+  .nav-left a {
+    padding: 15px 0;
+    font-size: 1.1rem;
+  }
+
+  /* Animate hamburger to X when menu is open */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Adjust other nav elements for mobile */
+  nav {
+    padding: 1rem;
+  }
+
+  .connect-wallet {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
